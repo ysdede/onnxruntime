@@ -99,9 +99,10 @@ const r4 = -1.453152027;
 const r5 = 1.061405429;
 
 fn erf_v(v: x_value_t) -> x_value_t {
-  let absv = abs(v);
+  let v_f32 = vec4<f32>(v);
+  let absv = abs(v_f32);
   let x = 1.0 / (1.0 + r0 * absv);
-  return sign(v) * (1.0 - ((((r5 * x + r4) * x + r3) * x + r2) * x + r1) * x * exp(-absv * absv));
+  return vec4<x_element_t>(sign(v_f32) * (1.0 - ((((r5 * x + r4) * x + r3) * x + r2) * x + r1) * x * exp(-absv * absv)));
 }
 )";
 
