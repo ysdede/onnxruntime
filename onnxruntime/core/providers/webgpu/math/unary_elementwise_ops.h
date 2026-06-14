@@ -102,7 +102,8 @@ fn erf_v(v: x_value_t) -> x_value_t {
   let v_f32 = vec4<f32>(v);
   let absv = abs(v_f32);
   let x = 1.0 / (1.0 + r0 * absv);
-  return vec4<x_element_t>(sign(v_f32) * (1.0 - ((((r5 * x + r4) * x + r3) * x + r2) * x + r1) * x * exp(-absv * absv)));
+  let res = sign(v_f32) * (1.0 - ((((r5 * x + r4) * x + r3) * x + r2) * x + r1) * x * exp(-absv * absv));
+  return x_value_t(res);
 }
 )";
 
